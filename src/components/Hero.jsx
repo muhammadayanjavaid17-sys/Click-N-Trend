@@ -1,148 +1,97 @@
+import { useEffect, useState } from "react";
 import "./Hero.css";
-import { useState, useEffect } from "react";
 
-import vacuumCleaner from "../assets/Images/vacuum-cleaner.png";
-import crystalLamp from "../assets/Images/crystal-lamp.webp";
-import bubbleMiniFan from "../assets/Images/bubble-mini-fan.webp";
-import flyingBall from "../assets/Images/flying-ball.webp";
+import banner1 from "../assets/images/banner1.webp";
+import banner2 from "../assets/images/banner2.webp";
+import banner3 from "../assets/images/banner3.webp";
 
 const slides = [
   {
-    id: 1,
-    image: vacuumCleaner,
-    title: "Smart Home & Trending Products",
-    description:
-      "Discover premium gadgets and everyday essentials carefully selected for your lifestyle.",
+    image: banner1,
+    badge: "NEW ARRIVAL",
+    title: "Crystal Touch Lamp",
+    subtitle:
+      "Modern lighting that transforms your room with elegance and premium ambience.",
+    button: "Shop Now",
   },
   {
-    id: 2,
-    image: crystalLamp,
-    title: "Modern Lifestyle Collection",
-    description:
-      "Premium products designed to make your home stylish, comfortable and smarter.",
+    image: banner2,
+    badge: "BEST SELLER",
+    title: "2L Push Chopper",
+    subtitle:
+      "Make food preparation faster and easier with our premium kitchen collection.",
+    button: "Explore",
   },
   {
-    id: 3,
-    image: bubbleMiniFan,
-    title: "Everyday Smart Essentials",
-    description:
-      "Quality products that make your daily life easier and more convenient.",
-  },
-  {
-    id: 4,
-    image: flyingBall,
-    title: "Trending Products Collection",
-    description:
-      "Explore the latest trending products loved by customers across Pakistan.",
+    image: banner3,
+    badge: "TRENDING",
+    title: "Mini Vacuum Cleaner",
+    subtitle:
+      "Powerful cleaning solution for home, office and car with portable convenience.",
+    button: "Buy Now",
   },
 ];
 
 function Hero() {
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [current, setCurrent] = useState(0);
 
   useEffect(() => {
-    const slider = setInterval(() => {
-      setCurrentSlide((prev) =>
-        prev === slides.length - 1 ? 0 : prev + 1
-      );
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % slides.length);
     }, 5000);
 
-    return () => clearInterval(slider);
+    return () => clearInterval(timer);
   }, []);
+
+  const nextSlide = () => {
+    setCurrent((prev) => (prev + 1) % slides.length);
+  };
+
+  const prevSlide = () => {
+    setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
+  };
 
   return (
     <section className="hero">
 
-      {/* LEFT CATEGORIES */}
+      <img
+        src={slides[current].image}
+        alt=""
+        className="hero-banner"
+      />
 
-      <div className="hero-categories">
+      <div className="hero-overlay">
 
-        <h3>Categories</h3>
+        <span className="hero-badge">
+          {slides[current].badge}
+        </span>
 
-        <ul>
-          <li>Home Essentials</li>
-          <li>Kitchen Gadgets</li>
-          <li>Beauty & Personal Care</li>
-          <li>Kids Products</li>
-          <li>Smart Gadgets</li>
-          <li>Trending Products</li>
-        </ul>
+        <h1>{slides[current].title}</h1>
 
-      </div>
+        <p>{slides[current].subtitle}</p>
 
-      {/* CENTER SLIDER */}
-
-      <div className="hero-slider">
-
-        <div className="hero-content">
-
-          <span className="hero-tag">
-            Click N Trend
-          </span>
-
-          <h1>
-            {slides[currentSlide].title}
-          </h1>
-
-          <p>
-            {slides[currentSlide].description}
-          </p>
-
-          <button className="shop-btn">
-            Shop Now
-          </button>
-
-        </div>
-
-        <div className="hero-product">
-
-          <img
-            src={slides[currentSlide].image}
-            alt={slides[currentSlide].title}
-          />
-                  </div>
-
-        <div className="slider-dots">
-          {slides.map((_, index) => (
-            <span
-              key={index}
-              className={
-                currentSlide === index
-                  ? "dot active"
-                  : "dot"
-              }
-              onClick={() => setCurrentSlide(index)}
-            ></span>
-          ))}
-        </div>
+        <button className="hero-btn">
+          {slides[current].button}
+        </button>
 
       </div>
 
-      {/* RIGHT SIDE */}
+      <button className="prev" onClick={prevSlide}>
+        ❮
+      </button>
 
-      <div className="hero-info">
+      <button className="next" onClick={nextSlide}>
+        ❯
+      </button>
 
-        <div className="info-card">
-          <h4>Premium Quality</h4>
-          <p>
-            Carefully selected products with reliable quality.
-          </p>
-        </div>
-
-        <div className="info-card">
-          <h4>Cash On Delivery</h4>
-          <p>
-            Convenient payment option available across Pakistan.
-          </p>
-        </div>
-
-        <div className="info-card">
-          <h4>Secure Shopping</h4>
-          <p>
-            Shop confidently with a smooth and trusted experience.
-          </p>
-        </div>
-
+      <div className="dots">
+        {slides.map((_, index) => (
+          <span
+            key={index}
+            className={current === index ? "dot active" : "dot"}
+            onClick={() => setCurrent(index)}
+          ></span>
+        ))}
       </div>
 
     </section>
