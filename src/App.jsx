@@ -10,63 +10,53 @@ import Footer from "./components/Footer";
 import FloatingWhatsApp from "./components/FloatingWhatsApp";
 import Cart from "./components/Cart";
 import ProductDetails from "./components/ProductDetails";
-import SortProducts from "./components/SortProducts";
 
 function Home({
   search,
   category,
   setCategory,
-  sortBy,
-  setSortBy,
 }) {
   return (
     <>
-      <Hero />
-      <Categories
-  category={category}
-  setCategory={setCategory}
-/>
+      <Header
+        search={search}
+        setSearch={() => {}}
+      />
 
-<SortProducts
-  sortBy={sortBy}
-  setSortBy={setSortBy}
-/>
+      <main>
+        <Hero />
 
-<FeaturedProducts
-  search={search}
-  category={category}
-  sortBy={sortBy}
-/>
-      <WhyChooseUs />
+        <Categories
+          category={category}
+          setCategory={setCategory}
+        />
+
+        <FeaturedProducts
+          search={search}
+          category={category}
+        />
+
+        <WhyChooseUs />
+      </main>
     </>
   );
 }
 
 function App() {
-
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("All");
-  const [sortBy, setSortBy] = useState("default");
 
   return (
-    <>
-      <Header
-        search={search}
-        setSearch={setSearch}
-      />
-
+    <div className="app">
       <Routes>
-
         <Route
           path="/"
           element={
             <Home
-  search={search}
-  category={category}
-  setCategory={setCategory}
-  sortBy={sortBy}
-  setSortBy={setSortBy}
-/>
+              search={search}
+              category={category}
+              setCategory={setCategory}
+            />
           }
         />
 
@@ -79,12 +69,11 @@ function App() {
           path="/product/:id"
           element={<ProductDetails />}
         />
-
       </Routes>
 
       <Footer />
       <FloatingWhatsApp />
-    </>
+    </div>
   );
 }
 
