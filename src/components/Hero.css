@@ -171,3 +171,33 @@
     right: 10px;
   }
 }
+/* =========================
+   MOBILE HERO FIX
+========================= */
+
+@media (max-width: 768px) {
+  .hero {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .hero-slide {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .hero-slide img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .hero-content {
+    max-width: 90%;
+  }
+}

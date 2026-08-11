@@ -29,3 +29,50 @@
 .copyright{
     text-align:center;
 }
+/* =========================
+   MOBILE FOOTER FIX
+========================= */
+
+@media (max-width: 768px) {
+  .footer {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .footer-container {
+    width: 100%;
+    max-width: 100%;
+    padding: 40px 24px 25px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    box-sizing: border-box;
+  }
+
+  .footer-column {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .footer-column h3,
+  .footer-column h4 {
+    margin-bottom: 12px;
+  }
+
+  .footer-column p,
+  .footer-column a {
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  .footer-bottom {
+    width: 100%;
+    max-width: 100%;
+    padding: 20px 24px;
+    text-align: center;
+    box-sizing: border-box;
+  }
+}
