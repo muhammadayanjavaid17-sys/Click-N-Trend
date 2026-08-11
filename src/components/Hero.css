@@ -120,46 +120,62 @@
   }
 }
 
-/* Mobile Responsive */
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
 
 @media (max-width: 768px) {
+
+  .hero {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
   .hero-banner {
-    min-height: 320px;
-    object-fit: cover;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    display: block;
+    object-fit: contain;
+    object-position: center;
   }
 
   .hero-overlay {
     left: 20px;
     right: 20px;
-    max-width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 48%;
   }
 
   .hero-badge {
-    font-size: 11px;
-    padding: 6px 14px;
-    margin-bottom: 10px;
+    font-size: 10px;
+    padding: 6px 12px;
+    margin-bottom: 8px;
   }
 
   .hero-overlay h1 {
-    font-size: 28px;
-    margin-bottom: 10px;
+    font-size: 27px;
+    line-height: 1.1;
+    margin-bottom: 8px;
   }
 
   .hero-overlay p {
-    font-size: 14px;
-    line-height: 1.5;
-    margin-bottom: 18px;
+    font-size: 13px;
+    line-height: 1.45;
+    margin-bottom: 14px;
   }
 
   .hero-btn {
-    padding: 12px 24px;
+    padding: 11px 22px;
     font-size: 14px;
   }
 
   .prev,
   .next {
-    width: 40px;
-    height: 40px;
+    width: 38px;
+    height: 38px;
     font-size: 18px;
   }
 
@@ -170,34 +186,14 @@
   .next {
     right: 10px;
   }
-}
-/* =========================
-   MOBILE HERO FIX
-========================= */
 
-@media (max-width: 768px) {
-  .hero {
-    width: 100%;
-    max-width: 100%;
-    overflow: hidden;
+  .dots {
+    bottom: 12px;
+    gap: 7px;
   }
 
-  .hero-slide {
-    width: 100%;
-    max-width: 100%;
-    overflow: hidden;
-  }
-
-  .hero-slide img {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-    object-position: center;
-  }
-
-  .hero-content {
-    max-width: 90%;
+  .dot {
+    width: 9px;
+    height: 9px;
   }
 }
