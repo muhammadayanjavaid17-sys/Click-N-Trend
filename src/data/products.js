@@ -1,47 +1,47 @@
-import vacuumCleaner from "../assets/Images/vacuum-cleaner.png";
-import miniMopCleaner from "../assets/Images/mini-mop-cleaner.png";
-import miniMosquitoRacket from "../assets/Images/mini-mosquito-racket.png";
-import miniElectricFoodChopper from "../assets/Images/mini-electric-food-chopper.png";
-import massageGun from "../assets/Images/massage-gun.png";
+import vacuumCleaner from "../assets/images/vacuum-cleaner.png";
+import miniMopCleaner from "../assets/images/mini-mop-cleaner.png";
+import miniMosquitoRacket from "../assets/images/mini-mosquito-racket.png";
+import miniElectricFoodChopper from "../assets/images/mini-electric-food-chopper.png";
+import massageGun from "../assets/images/massage-gun.png";
 
-import multiVegetableFruitCutter from "../assets/Images/multi-vegetable-&-fruit-cutter.webp";
-import magicWaterBook from "../assets/Images/magic-water-book.webp";
-import manualFoodGrater from "../assets/Images/manual-food-grater.webp";
-import drumMultifunctionalRollerVegetableCutter from "../assets/Images/drum-multifunctional-roller-vegetable-cutter.webp";
-import blackHeadRemoverMachine from "../assets/Images/5-in-1-black-head-remover-machine.webp";
-import antiTheftCrossBodyBag from "../assets/Images/anti-theft-cross-body-bag.webp";
+import multiVegetableFruitCutter from "../assets/images/multi-vegetable-&-fruit-cutter.webp";
+import magicWaterBook from "../assets/images/magic-water-book.webp";
+import manualFoodGrater from "../assets/images/manual-food-grater.webp";
+import drumMultifunctionalRollerVegetableCutter from "../assets/images/drum-multifunctional-roller-vegetable-cutter.webp";
+import blackHeadRemoverMachine from "../assets/images/5-in-1-black-head-remover-machine.webp";
+import antiTheftCrossBodyBag from "../assets/images/anti-theft-cross-body-bag.webp";
 
-import siliconWashingGloves from "../assets/Images/silicon-washing-gloves.webp";
-import professionalKnifeSharpener from "../assets/Images/professional-knife-sharpener.webp";
-import handheldMassageBallForMuscle from "../assets/Images/handheld-massage-ball-for-muscle.webp";
-import backPostureCorrectorBelt from "../assets/Images/back-posture-corrector-belt.webp";
-import digitalMassagerForFaceAndNeck from "../assets/Images/digital-massager-for-face-and-neck.webp";
-import magicMeshMagneticScreenDoor from "../assets/Images/magic-mesh-magnetic-screen-door.webp";
+import siliconWashingGloves from "../assets/images/silicon-washing-gloves.webp";
+import professionalKnifeSharpener from "../assets/images/professional-knife-sharpener.webp";
+import handheldMassageBallForMuscle from "../assets/images/handheld-massage-ball-for-muscle.webp";
+import backPostureCorrectorBelt from "../assets/images/back-posture-corrector-belt.webp";
+import digitalMassagerForFaceAndNeck from "../assets/images/digital-massager-for-face-and-neck.webp";
+import magicMeshMagneticScreenDoor from "../assets/images/magic-mesh-magnetic-screen-door.webp";
 
-import digitalKitchenWeightScale from "../assets/Images/digital-kitchen-weight-scale.webp";
-import mosquitoCoilStand from "../assets/Images/mosquito-coil-stand.webp";
-import babyShowerCap from "../assets/Images/baby-shower-Cap.webp";
-import vegetableCutter5in1 from "../assets/Images/5-in-1-vegetable-cutter.webp";
-import dynamicSandArtLamp from "../assets/Images/dynamic-sand-art-lamp-liquid-motion-(7 inch).webp";
-import coldKettle35Litre from "../assets/Images/3.5-litre-cold-kettle.webp";
-import t9MetalHighQuality from "../assets/Images/T9-metal-high-quality.webp";
-import studyLamp from "../assets/Images/study-lamp.webp";
+import digitalKitchenWeightScale from "../assets/images/digital-kitchen-weight-scale.webp";
+import mosquitoCoilStand from "../assets/images/mosquito-coil-stand.webp";
+import babyShowerCap from "../assets/images/baby-shower-Cap.webp";
+import vegetableCutter5in1 from "../assets/images/5-in-1-vegetable-cutter.webp";
+import dynamicSandArtLamp from "../assets/images/dynamic-sand-art-lamp-liquid-motion-(7 inch).webp";
+import coldKettle35Litre from "../assets/images/3.5-litre-cold-kettle.webp";
+import t9MetalHighQuality from "../assets/images/T9-metal-high-quality.webp";
+import studyLamp from "../assets/images/study-lamp.webp";
 
-import siliconeIceRoller from "../assets/Images/silicone-ice-roller.webp";
-import pandaLamp from "../assets/Images/panda-lamp.webp";
-import siliconeFoldingBottle from "../assets/Images/silicone-folding-bottle.webp";
-import portableNeckFan from "../assets/Images/portable-neck-fan.webp";
-import portableSealingMachine from "../assets/Images/portable-sealing-machine.webp";
+import siliconeIceRoller from "../assets/images/silicone-ice-roller.webp";
+import pandaLamp from "../assets/images/panda-lamp.webp";
+import siliconeFoldingBottle from "../assets/images/silicone-folding-bottle.webp";
+import portableNeckFan from "../assets/images/portable-neck-fan.webp";
+import portableSealingMachine from "../assets/images/portable-sealing-machine.webp";
 
-import mirrorSticker from "../assets/Images/mirror-sticker.webp";
-import crystalLamp from "../assets/Images/crystal-lamp.webp";
-import steelPushChopper from "../assets/Images/2l-steel-push-chopper.webp";
-import windowAirConditionerCover from "../assets/Images/window-air-conditioner-cover.webp";
-import miniElectricShockInsectRacket from "../assets/Images/mini-electric-shock-insect-racket.webp";
-import portableMiniMassagerGun from "../assets/Images/portable-mini-massager-gun.webp";
-import bubbleMiniFan from "../assets/Images/bubble-mini-fan.webp";
-import foldableMosquitoRacket from "../assets/Images/foldable-mosquito-racket.webp";
-import flyingBall from "../assets/Images/flying-ball.webp";
+import mirrorSticker from "../assets/images/mirror-sticker.webp";
+import crystalLamp from "../assets/images/crystal-lamp.webp";
+import steelPushChopper from "../assets/images/2l-steel-push-chopper.webp";
+import windowAirConditionerCover from "../assets/images/window-air-conditioner-cover.webp";
+import miniElectricShockInsectRacket from "../assets/images/mini-electric-shock-insect-racket.webp";
+import portableMiniMassagerGun from "../assets/images/portable-mini-massager-gun.webp";
+import bubbleMiniFan from "../assets/images/bubble-mini-fan.webp";
+import foldableMosquitoRacket from "../assets/images/foldable-mosquito-racket.webp";
+import flyingBall from "../assets/images/flying-ball.webp";
 
 const products = [
   {
