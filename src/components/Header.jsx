@@ -5,20 +5,28 @@ import logo from "../assets/images/logo.png";
 import "./Header.css";
 
 function Header({ search, setSearch }) {
-
   const { cart } = useContext(CartContext);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  return (
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
 
+  return (
     <header className="header">
 
+      {/* Logo */}
       <div className="logo">
-        <Link to="/">
-          <img src={logo} alt="Click N Trend" className="logo-img" />
+        <Link to="/" onClick={closeMenu}>
+          <img
+            src={logo}
+            alt="Click N Trend"
+            className="logo-img"
+          />
         </Link>
       </div>
 
+      {/* Mobile Menu Button */}
       <div
         className="menu-toggle"
         onClick={() => setMenuOpen(!menuOpen)}
@@ -26,16 +34,32 @@ function Header({ search, setSearch }) {
         ☰
       </div>
 
+      {/* Navigation */}
       <nav className={menuOpen ? "nav active" : "nav"}>
 
-        <a href="#">Home</a>
-        <a href="#">Shop</a>
-        <a href="#">Categories</a>
-        <a href="#">About</a>
-        <a href="#">Contact</a>
+        <Link to="/" onClick={closeMenu}>
+          Home
+        </Link>
+
+        <Link to="/shop" onClick={closeMenu}>
+          Shop
+        </Link>
+
+        <Link to="/categories" onClick={closeMenu}>
+          Categories
+        </Link>
+
+        <Link to="/about" onClick={closeMenu}>
+          About
+        </Link>
+
+        <Link to="/contact" onClick={closeMenu}>
+          Contact
+        </Link>
 
       </nav>
 
+      {/* Right Side */}
       <div className={menuOpen ? "header-right active" : "header-right"}>
 
         <input
@@ -49,6 +73,7 @@ function Header({ search, setSearch }) {
         <Link
           to="/cart"
           className="cart-btn"
+          onClick={closeMenu}
         >
           Cart ({cart.length})
         </Link>
@@ -56,7 +81,6 @@ function Header({ search, setSearch }) {
       </div>
 
     </header>
-
   );
 }
 
