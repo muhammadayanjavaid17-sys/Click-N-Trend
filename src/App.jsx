@@ -19,9 +19,11 @@ import "./App.css";
 // HOME PAGE
 // =========================
 
-function Home({ category, setCategory }) {
+function Home({ search, category, setCategory }) {
   return (
     <main>
+
+      {/* Hero / Banners */}
       <Hero />
 
       {/* Categories */}
@@ -30,11 +32,12 @@ function Home({ category, setCategory }) {
         setCategory={setCategory}
       />
 
-      {/* Products */}
+      {/* Featured Products */}
       <FeaturedProducts
-        search=""
+        search={search}
         category={category}
       />
+
     </main>
   );
 }
@@ -47,7 +50,9 @@ function Home({ category, setCategory }) {
 function Shop({ search, category }) {
   return (
     <main>
+
       <section className="page-section">
+
         <h1>Shop</h1>
 
         <p>
@@ -58,7 +63,9 @@ function Shop({ search, category }) {
           search={search}
           category={category}
         />
+
       </section>
+
     </main>
   );
 }
@@ -71,7 +78,9 @@ function Shop({ search, category }) {
 function CategoriesPage({ category, setCategory }) {
   return (
     <main>
+
       <section className="page-section">
+
         <h1>Shop by Category</h1>
 
         <p>
@@ -82,7 +91,9 @@ function CategoriesPage({ category, setCategory }) {
           category={category}
           setCategory={setCategory}
         />
+
       </section>
+
     </main>
   );
 }
@@ -93,10 +104,14 @@ function CategoriesPage({ category, setCategory }) {
 // =========================
 
 function App() {
+
   const [search, setSearch] = useState("");
+
   const [category, setCategory] = useState("All");
 
+
   return (
+
     <div className="app">
 
       {/* =========================
@@ -115,11 +130,15 @@ function App() {
 
       <Routes>
 
-        {/* HOME */}
+        {/* =========================
+            HOME
+        ========================= */}
+
         <Route
           path="/"
           element={
             <Home
+              search={search}
               category={category}
               setCategory={setCategory}
             />
@@ -127,7 +146,10 @@ function App() {
         />
 
 
-        {/* SHOP */}
+        {/* =========================
+            SHOP
+        ========================= */}
+
         <Route
           path="/shop"
           element={
@@ -139,7 +161,10 @@ function App() {
         />
 
 
-        {/* CATEGORIES */}
+        {/* =========================
+            CATEGORIES
+        ========================= */}
+
         <Route
           path="/categories"
           element={
@@ -151,28 +176,40 @@ function App() {
         />
 
 
-        {/* ABOUT */}
+        {/* =========================
+            ABOUT
+        ========================= */}
+
         <Route
           path="/about"
           element={<About />}
         />
 
 
-        {/* CONTACT */}
+        {/* =========================
+            CONTACT
+        ========================= */}
+
         <Route
           path="/contact"
           element={<Contact />}
         />
 
 
-        {/* CART */}
+        {/* =========================
+            CART
+        ========================= */}
+
         <Route
           path="/cart"
           element={<Cart />}
         />
 
 
-        {/* PRODUCT DETAILS */}
+        {/* =========================
+            PRODUCT DETAILS
+        ========================= */}
+
         <Route
           path="/product/:id"
           element={<ProductDetails />}
@@ -195,6 +232,7 @@ function App() {
       <FloatingWhatsApp />
 
     </div>
+
   );
 }
 

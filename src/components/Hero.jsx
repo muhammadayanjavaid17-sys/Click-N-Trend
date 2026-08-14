@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Hero.css";
 
 import banner1 from "../assets/images/banner1.webp";
@@ -13,6 +14,7 @@ const slides = [
     subtitle:
       "Modern lighting that transforms your room with elegance and premium ambience.",
     button: "Shop Now",
+    productId: 32,
   },
   {
     image: banner2,
@@ -21,6 +23,7 @@ const slides = [
     subtitle:
       "Make food preparation faster and easier with our premium kitchen collection.",
     button: "Explore",
+    productId: 33,
   },
   {
     image: banner3,
@@ -29,11 +32,13 @@ const slides = [
     subtitle:
       "Powerful cleaning solution for home, office and car with portable convenience.",
     button: "Buy Now",
+    productId: 1,
   },
 ];
 
 function Hero() {
   const [current, setCurrent] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -51,12 +56,16 @@ function Hero() {
     setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
   };
 
+  const handleShopNow = () => {
+    navigate(`/product/${slides[current].productId}`);
+  };
+
   return (
     <section className="hero">
 
       <img
         src={slides[current].image}
-        alt=""
+        alt={slides[current].title}
         className="hero-banner"
       />
 
@@ -70,28 +79,49 @@ function Hero() {
 
         <p>{slides[current].subtitle}</p>
 
-        <button className="hero-btn">
+        <button
+          className="hero-btn"
+          onClick={handleShopNow}
+        >
           {slides[current].button}
         </button>
 
       </div>
 
-      <button className="prev" onClick={prevSlide}>
+      {/* Previous */}
+      <button
+        className="prev"
+        onClick={prevSlide}
+        aria-label="Previous slide"
+      >
         ❮
       </button>
 
-      <button className="next" onClick={nextSlide}>
+      {/* Next */}
+      <button
+        className="next"
+        onClick={nextSlide}
+        aria-label="Next slide"
+      >
         ❯
       </button>
 
+      {/* Dots */}
       <div className="dots">
+
         {slides.map((_, index) => (
-          <span
+          <button
             key={index}
-            className={current === index ? "dot active" : "dot"}
+            className={
+              current === index
+                ? "dot active"
+                : "dot"
+            }
             onClick={() => setCurrent(index)}
-          ></span>
+            aria-label={`Go to slide ${index + 1}`}
+          />
         ))}
+
       </div>
 
     </section>
