@@ -5,31 +5,52 @@ import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Categories from "./components/Categories";
 import FeaturedProducts from "./components/FeaturedProducts";
-import WhyChooseUs from "./components/WhyChooseUs";
 import Footer from "./components/Footer";
 import FloatingWhatsApp from "./components/FloatingWhatsApp";
 import Cart from "./components/Cart";
 import ProductDetails from "./components/ProductDetails";
 import Contact from "./components/Contact";
+import About from "./components/About";
 
 import "./App.css";
 
 
+// =========================
+// HOME PAGE
+// =========================
+
 function Home() {
   return (
-    <>
+    <main>
       <Hero />
-    </>
+
+      <Categories
+        category="All"
+        setCategory={() => {}}
+      />
+
+      <FeaturedProducts
+        search=""
+        category="All"
+      />
+    </main>
   );
 }
 
+
+// =========================
+// SHOP PAGE
+// =========================
 
 function Shop({ search, category }) {
   return (
     <main>
       <section className="page-section">
         <h1>Shop</h1>
-        <p>Explore our latest smart and trending products.</p>
+
+        <p>
+          Explore our latest smart and trending products.
+        </p>
 
         <FeaturedProducts
           search={search}
@@ -41,12 +62,19 @@ function Shop({ search, category }) {
 }
 
 
+// =========================
+// CATEGORIES PAGE
+// =========================
+
 function CategoriesPage({ category, setCategory }) {
   return (
     <main>
       <section className="page-section">
         <h1>Shop by Category</h1>
-        <p>Explore products from our different categories.</p>
+
+        <p>
+          Explore products from our different categories.
+        </p>
 
         <Categories
           category={category}
@@ -58,29 +86,9 @@ function CategoriesPage({ category, setCategory }) {
 }
 
 
-function About() {
-  return (
-    <main>
-      <section className="page-section about-page">
-        <h1>About Click N Trend</h1>
-
-        <p>
-          Welcome to Click N Trend — your one-stop shop for
-          smart, useful and trending products.
-        </p>
-
-        <p>
-          We focus on bringing carefully selected products
-          that make everyday life easier, smarter and more
-          convenient.
-        </p>
-
-        <WhyChooseUs />
-      </section>
-    </main>
-  );
-}
-
+// =========================
+// APP
+// =========================
 
 function App() {
   const [search, setSearch] = useState("");
@@ -89,11 +97,19 @@ function App() {
   return (
     <div className="app">
 
-      {/* Header stays on every page */}
+      {/* =========================
+          HEADER
+      ========================= */}
+
       <Header
         search={search}
         setSearch={setSearch}
       />
+
+
+      {/* =========================
+          ROUTES
+      ========================= */}
 
       <Routes>
 
@@ -102,6 +118,7 @@ function App() {
           path="/"
           element={<Home />}
         />
+
 
         {/* SHOP */}
         <Route
@@ -114,6 +131,7 @@ function App() {
           }
         />
 
+
         {/* CATEGORIES */}
         <Route
           path="/categories"
@@ -125,11 +143,13 @@ function App() {
           }
         />
 
+
         {/* ABOUT */}
         <Route
           path="/about"
           element={<About />}
         />
+
 
         {/* CONTACT */}
         <Route
@@ -137,11 +157,13 @@ function App() {
           element={<Contact />}
         />
 
+
         {/* CART */}
         <Route
           path="/cart"
           element={<Cart />}
         />
+
 
         {/* PRODUCT DETAILS */}
         <Route
@@ -151,12 +173,23 @@ function App() {
 
       </Routes>
 
+
+      {/* =========================
+          FOOTER
+      ========================= */}
+
       <Footer />
+
+
+      {/* =========================
+          WHATSAPP
+      ========================= */}
 
       <FloatingWhatsApp />
 
     </div>
   );
 }
+
 
 export default App;
