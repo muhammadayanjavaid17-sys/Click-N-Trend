@@ -1,42 +1,66 @@
+import { useNavigate } from "react-router-dom";
 import "./Categories.css";
 
 function Categories({ category, setCategory }) {
+  const navigate = useNavigate();
 
   const categories = [
-    "All",
-    "Smart Gadgets",
-    "Home Essentials",
-    "Kitchen Gadgets",
-    "Beauty & Personal Care",
-    "Kids Products",
+    {
+      name: "All",
+      description: "Browse all products.",
+    },
+    {
+      name: "Smart Gadgets",
+      description: "Explore Smart Gadgets.",
+    },
+    {
+      name: "Home Essentials",
+      description: "Explore Home Essentials.",
+    },
+    {
+      name: "Kitchen Gadgets",
+      description: "Explore Kitchen Gadgets.",
+    },
+    {
+      name: "Beauty & Personal Care",
+      description: "Explore Beauty & Personal Care.",
+    },
+    {
+      name: "Kids Products",
+      description: "Explore Kids Products.",
+    },
   ];
 
+  const handleCategoryClick = (selectedCategory) => {
+    // Category select karo
+    setCategory(selectedCategory);
+
+    // Shop page par jao
+    navigate("/shop");
+  };
+
   return (
-    <section className="categories">
+    <section className="categories-section">
 
-      <h2>Shop by Category</h2>
+      <h1>Shop by Category</h1>
 
-      <div className="category-grid">
+      <div className="categories-grid">
 
         {categories.map((item) => (
-
-          <div
-            key={item}
+          <button
+            key={item.name}
+            type="button"
             className={`category-card ${
-              category === item ? "active-category" : ""
+              category === item.name ? "active" : ""
             }`}
-            onClick={() => setCategory(item)}
+            onClick={() => handleCategoryClick(item.name)}
           >
-            <h3>{item}</h3>
 
-            <p>
-              {item === "All"
-                ? "Browse all products."
-                : `Explore ${item}.`}
-            </p>
+            <h2>{item.name}</h2>
 
-          </div>
+            <p>{item.description}</p>
 
+          </button>
         ))}
 
       </div>
