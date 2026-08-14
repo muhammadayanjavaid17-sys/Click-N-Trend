@@ -19,19 +19,21 @@ import "./App.css";
 // HOME PAGE
 // =========================
 
-function Home() {
+function Home({ category, setCategory }) {
   return (
     <main>
       <Hero />
 
+      {/* Categories */}
       <Categories
-        category="All"
-        setCategory={() => {}}
+        category={category}
+        setCategory={setCategory}
       />
 
+      {/* Products */}
       <FeaturedProducts
         search=""
-        category="All"
+        category={category}
       />
     </main>
   );
@@ -116,7 +118,12 @@ function App() {
         {/* HOME */}
         <Route
           path="/"
-          element={<Home />}
+          element={
+            <Home
+              category={category}
+              setCategory={setCategory}
+            />
+          }
         />
 
 
