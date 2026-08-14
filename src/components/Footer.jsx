@@ -22,17 +22,11 @@ function Footer() {
           <h3>Quick Links</h3>
 
           <div className="footer-links">
-
             <Link to="/">Home</Link>
-
             <Link to="/shop">Shop</Link>
-
             <Link to="/categories">Categories</Link>
-
             <Link to="/about">About</Link>
-
             <Link to="/contact">Contact</Link>
-
           </div>
         </div>
 
@@ -44,7 +38,7 @@ function Footer() {
 
           <div className="contact-links">
 
-            {/* WhatsApp */}
+            {/* WhatsApp / Phone */}
             <a
               href="https://wa.me/923488759970"
               target="_blank"
@@ -78,6 +72,7 @@ function Footer() {
           {/* Social Media */}
           <div className="social-links">
 
+            {/* Facebook */}
             <a
               href="https://www.facebook.com/clickntrend"
               target="_blank"
@@ -85,10 +80,11 @@ function Footer() {
               className="social-icon facebook"
               aria-label="Click N Trend Facebook"
             >
-              f
+              <span>f</span>
             </a>
 
 
+            {/* Instagram */}
             <a
               href="https://www.instagram.com/cli_ckntrend/"
               target="_blank"
@@ -96,7 +92,37 @@ function Footer() {
               className="social-icon instagram"
               aria-label="Click N Trend Instagram"
             >
-              ◎
+              <svg
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <rect
+                  x="3"
+                  y="3"
+                  width="18"
+                  height="18"
+                  rx="5"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                />
+
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="4"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                />
+
+                <circle
+                  cx="17.5"
+                  cy="6.5"
+                  r="1.2"
+                  fill="currentColor"
+                />
+              </svg>
             </a>
 
           </div>

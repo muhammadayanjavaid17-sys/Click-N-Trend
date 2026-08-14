@@ -1,84 +1,74 @@
 import "./Contact.css";
+
 function Contact() {
   return (
     <main className="contact-page">
 
-      <section className="contact-section">
+      <section className="contact-hero">
+        <h1>Contact Us</h1>
+        <p>
+          Have a question or need help with your order? We are here to help.
+        </p>
+      </section>
 
-        <div className="contact-header">
-          <h1>Contact Us</h1>
+      <section className="contact-content">
 
-          <p>
-            Have a question or need help with your order?
-            We are here to help.
+        {/* Left Side */}
+        <div className="contact-info">
+          <h2>Get In Touch</h2>
+
+          <p className="contact-description">
+            Feel free to contact us for product information, orders or
+            any other questions.
           </p>
-        </div>
 
-        <div className="contact-content">
-
-          <div className="contact-info">
-
-            <h2>Get In Touch</h2>
-
-            <p>
-              Feel free to contact us for product information,
-              orders or any other questions.
-            </p>
-
-            <div className="contact-detail">
-              <strong>Phone</strong>
-              <span>+92 XXX XXXXXXX</span>
-            </div>
-
-            <div className="contact-detail">
-              <strong>Email</strong>
-              <span>info@clickntrend.com</span>
-            </div>
-
-            <div className="contact-detail">
-              <strong>Location</strong>
-              <span>Pakistan</span>
-            </div>
-
+          <div className="contact-detail">
+            <h3>Phone</h3>
+            <a href="tel:+923488759970">
+              +92 348 8759970
+            </a>
           </div>
 
-          <form
-            className="contact-form"
-            onSubmit={(e) => {
-              e.preventDefault();
-              alert("Thank you! We will contact you soon.");
-            }}
-          >
+          <div className="contact-detail">
+            <h3>Email</h3>
+            <a href="mailto:clickntrend1306@gmail.com">
+              clickntrend1306@gmail.com
+            </a>
+          </div>
 
-            <input
-              type="text"
-              placeholder="Your Name"
-              required
-            />
+          <div className="contact-detail">
+            <h3>Location</h3>
+            <p>Pakistan</p>
+          </div>
+        </div>
 
-            <input
-              type="email"
-              placeholder="Your Email"
-              required
-            />
 
-            <input
-              type="text"
-              placeholder="Subject"
-              required
-            />
+        {/* Right Side */}
+        <div className="contact-form">
 
-            <textarea
-              placeholder="Your Message"
-              rows="6"
-              required
-            />
+          <input
+            type="text"
+            placeholder="Your Name"
+          />
 
-            <button type="submit">
-              Send Message
-            </button>
+          <input
+            type="email"
+            placeholder="Your Email"
+          />
 
-          </form>
+          <input
+            type="text"
+            placeholder="Subject"
+          />
+
+          <textarea
+            placeholder="Your Message"
+            rows="6"
+          ></textarea>
+
+          <button type="button">
+            Send Message
+          </button>
 
         </div>
 

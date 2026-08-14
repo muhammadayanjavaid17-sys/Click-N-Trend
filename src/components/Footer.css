@@ -11,7 +11,6 @@
   overflow: hidden;
 }
 
-
 /* =========================
    FOOTER CONTENT
 ========================= */
@@ -22,10 +21,8 @@
 
   display: grid;
   grid-template-columns: 2fr 1fr 1.3fr;
-
   gap: 60px;
 }
-
 
 /* =========================
    HEADINGS
@@ -43,7 +40,6 @@
   font-weight: 700;
 }
 
-
 /* =========================
    BRAND TEXT
 ========================= */
@@ -51,13 +47,10 @@
 .footer-brand p {
   max-width: 430px;
   margin: 0;
-
   color: #ccc;
-
   font-size: 17px;
   line-height: 1.7;
 }
-
 
 /* =========================
    QUICK LINKS
@@ -71,12 +64,9 @@
 
 .footer-links a {
   width: fit-content;
-
   color: #ddd;
   text-decoration: none;
-
   font-size: 17px;
-
   transition: 0.25s ease;
 }
 
@@ -84,7 +74,6 @@
   color: #d4af37;
   transform: translateX(4px);
 }
-
 
 /* =========================
    CONTACT
@@ -116,7 +105,6 @@ a.contact-link:hover {
   color: #d4af37;
 }
 
-
 /* =========================
    SOCIAL MEDIA
 ========================= */
@@ -125,13 +113,12 @@ a.contact-link:hover {
   display: flex;
   align-items: center;
   gap: 12px;
-
   margin-top: 25px;
 }
 
 .social-icon {
-  width: 42px;
-  height: 42px;
+  width: 48px;
+  height: 48px;
 
   display: flex;
   align-items: center;
@@ -142,38 +129,41 @@ a.contact-link:hover {
   color: #fff;
   text-decoration: none;
 
-  font-size: 22px;
-  font-weight: 700;
-
-  transition: 0.25s ease;
+  transition: 0.3s ease;
 }
 
 .social-icon:hover {
   transform: translateY(-3px);
 }
 
-
 /* Facebook */
 
-.facebook {
+.social-icon.facebook {
   background: #1877f2;
   font-family: Arial, sans-serif;
+  font-size: 27px;
+  font-weight: 700;
 }
-
 
 /* Instagram */
 
-.instagram {
+.social-icon.instagram {
   background: linear-gradient(
-    135deg,
-    #833ab4,
-    #fd1d1d,
-    #fcb045
+    45deg,
+    #feda75,
+    #fa7e1e,
+    #d62976,
+    #962fbf,
+    #4f5bd5
   );
 
-  font-size: 28px;
+  color: #fff;
 }
 
+.social-icon.instagram svg {
+  width: 25px;
+  height: 25px;
+}
 
 /* =========================
    HR
@@ -188,20 +178,16 @@ a.contact-link:hover {
   border-top: 1px solid #333;
 }
 
-
 /* =========================
    COPYRIGHT
 ========================= */
 
 .copyright {
   text-align: center;
-
   color: #ccc;
-
   font-size: 15px;
   line-height: 1.5;
 }
-
 
 /* =========================
    TABLET
@@ -224,7 +210,6 @@ a.contact-link:hover {
   }
 }
 
-
 /* =========================
    MOBILE
 ========================= */
@@ -237,9 +222,7 @@ a.contact-link:hover {
 
   .footer-content {
     width: 100%;
-
     grid-template-columns: 1fr;
-
     gap: 35px;
   }
 
@@ -266,6 +249,15 @@ a.contact-link:hover {
   .contact-link {
     font-size: 15px;
     overflow-wrap: anywhere;
+  }
+
+  .social-links {
+    margin-top: 20px;
+  }
+
+  .social-icon {
+    width: 45px;
+    height: 45px;
   }
 
   .footer hr {
