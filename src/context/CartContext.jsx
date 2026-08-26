@@ -4,6 +4,7 @@ export const CartContext = createContext();
 
 function CartProvider({ children }) {
   const [cart, setCart] = useState([]);
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
   const addToCart = (product) => {
     const existingProduct = cart.find(
@@ -16,7 +17,8 @@ function CartProvider({ children }) {
           item.id === product.id
             ? {
                 ...item,
-                quantity: item.quantity + product.quantity,
+                quantity:
+                  item.quantity + (product.quantity || 1),
               }
             : item
         )
@@ -30,17 +32,29 @@ function CartProvider({ children }) {
         },
       ]);
     }
+
+    // Open cart drawer after adding
+    setIsCartOpen(true);
+  };
+
+  const closeCart = () => {
+    setIsCartOpen(false);
   };
 
   const removeFromCart = (indexToRemove) => {
-    setCart(cart.filter((_, index) => index !== indexToRemove));
+    setCart(
+      cart.filter((_, index) => index !== indexToRemove)
+    );
   };
 
   const increaseQuantity = (id) => {
     setCart(
       cart.map((item) =>
         item.id === id
-          ? { ...item, quantity: item.quantity + 1 }
+          ? {
+              ...item,
+              quantity: item.quantity + 1,
+            }
           : item
       )
     );
@@ -51,7 +65,10 @@ function CartProvider({ children }) {
       cart
         .map((item) =>
           item.id === id
-            ? { ...item, quantity: item.quantity - 1 }
+            ? {
+                ...item,
+                quantity: item.quantity - 1,
+              }
             : item
         )
         .filter((item) => item.quantity > 0)
@@ -66,6 +83,9 @@ function CartProvider({ children }) {
         removeFromCart,
         increaseQuantity,
         decreaseQuantity,
+        isCartOpen,
+        setIsCartOpen,
+        closeCart,
       }}
     >
       {children}

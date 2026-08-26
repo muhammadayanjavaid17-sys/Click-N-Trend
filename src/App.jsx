@@ -8,6 +8,7 @@ import FeaturedProducts from "./components/FeaturedProducts";
 import Footer from "./components/Footer";
 import FloatingWhatsApp from "./components/FloatingWhatsApp";
 import Cart from "./components/Cart";
+import CartDrawer from "./components/CartDrawer";
 import ProductDetails from "./components/ProductDetails";
 import Contact from "./components/Contact";
 import About from "./components/About";
@@ -23,16 +24,16 @@ function Home({ search, category, setCategory }) {
   return (
     <main>
 
-      {/* Hero / Banners */}
+      {/* HERO / BANNERS */}
       <Hero />
 
-      {/* Categories */}
+      {/* CATEGORIES */}
       <Categories
         category={category}
         setCategory={setCategory}
       />
 
-      {/* Featured Products */}
+      {/* FEATURED PRODUCTS */}
       <FeaturedProducts
         search={search}
         category={category}
@@ -106,12 +107,13 @@ function CategoriesPage({ category, setCategory }) {
 function App() {
 
   const [search, setSearch] = useState("");
-
   const [category, setCategory] = useState("All");
+
+  // Cart drawer state
+  const [cartDrawerOpen, setCartDrawerOpen] = useState(false);
 
 
   return (
-
     <div className="app">
 
       {/* =========================
@@ -121,6 +123,7 @@ function App() {
       <Header
         search={search}
         setSearch={setSearch}
+        onCartClick={() => setCartDrawerOpen(true)}
       />
 
 
@@ -130,9 +133,7 @@ function App() {
 
       <Routes>
 
-        {/* =========================
-            HOME
-        ========================= */}
+        {/* HOME */}
 
         <Route
           path="/"
@@ -146,9 +147,7 @@ function App() {
         />
 
 
-        {/* =========================
-            SHOP
-        ========================= */}
+        {/* SHOP */}
 
         <Route
           path="/shop"
@@ -161,9 +160,7 @@ function App() {
         />
 
 
-        {/* =========================
-            CATEGORIES
-        ========================= */}
+        {/* CATEGORIES */}
 
         <Route
           path="/categories"
@@ -176,9 +173,7 @@ function App() {
         />
 
 
-        {/* =========================
-            ABOUT
-        ========================= */}
+        {/* ABOUT */}
 
         <Route
           path="/about"
@@ -186,9 +181,7 @@ function App() {
         />
 
 
-        {/* =========================
-            CONTACT
-        ========================= */}
+        {/* CONTACT */}
 
         <Route
           path="/contact"
@@ -196,9 +189,7 @@ function App() {
         />
 
 
-        {/* =========================
-            CART
-        ========================= */}
+        {/* CART */}
 
         <Route
           path="/cart"
@@ -206,16 +197,28 @@ function App() {
         />
 
 
-        {/* =========================
-            PRODUCT DETAILS
-        ========================= */}
+        {/* PRODUCT DETAILS */}
 
         <Route
           path="/product/:id"
-          element={<ProductDetails />}
+          element={
+            <ProductDetails
+              onCartOpen={() => setCartDrawerOpen(true)}
+            />
+          }
         />
 
       </Routes>
+
+
+      {/* =========================
+          CART DRAWER
+      ========================= */}
+
+      <CartDrawer
+        isOpen={cartDrawerOpen}
+        onClose={() => setCartDrawerOpen(false)}
+      />
 
 
       {/* =========================
@@ -226,13 +229,12 @@ function App() {
 
 
       {/* =========================
-          WHATSAPP
+          FLOATING WHATSAPP
       ========================= */}
 
       <FloatingWhatsApp />
 
     </div>
-
   );
 }
 

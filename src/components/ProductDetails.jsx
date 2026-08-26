@@ -9,12 +9,12 @@ import {
   FaBolt,
   FaTruck,
   FaShieldAlt,
-  FaCheckCircle
+  FaCheckCircle,
 } from "react-icons/fa";
 
 import "./ProductDetails.css";
 
-function ProductDetails() {
+function ProductDetails({ onCartOpen }) {
 
   const { addToCart } = useContext(CartContext);
 
@@ -34,11 +34,51 @@ function ProductDetails() {
     );
   }
 
+
+  // =========================
+  // ADD TO CART
+  // =========================
+
+  const handleAddToCart = () => {
+
+    addToCart({
+      ...product,
+      quantity,
+    });
+
+    // Open right-side cart drawer
+    if (onCartOpen) {
+      onCartOpen();
+    }
+
+  };
+
+
+  // =========================
+  // BUY NOW
+  // =========================
+
+  const handleBuyNow = () => {
+
+    addToCart({
+      ...product,
+      quantity,
+    });
+
+    if (onCartOpen) {
+      onCartOpen();
+    }
+
+  };
+
+
   return (
 
     <section className="product-details">
 
-      {/* LEFT SIDE */}
+      {/* =========================
+          LEFT SIDE
+      ========================= */}
 
       <div className="product-image">
 
@@ -49,13 +89,19 @@ function ProductDetails() {
 
       </div>
 
-      {/* RIGHT SIDE */}
+
+      {/* =========================
+          RIGHT SIDE
+      ========================= */}
 
       <div className="product-info">
 
         <h1>
           {product.name}
         </h1>
+
+
+        {/* Rating */}
 
         <div className="product-rating">
 
@@ -71,9 +117,15 @@ function ProductDetails() {
 
         </div>
 
+
+        {/* Price */}
+
         <h2 className="product-price">
           Rs. {product.price}
         </h2>
+
+
+        {/* Stock */}
 
         <div className="stock">
 
@@ -85,25 +137,37 @@ function ProductDetails() {
 
         </div>
 
+
+        {/* Description */}
+
         <p className="description">
           {product.description}
         </p>
 
-        {/* Quantity */}
-                <div className="quantity-box">
+
+        {/* =========================
+            QUANTITY
+        ========================= */}
+
+        <div className="quantity-box">
 
           <button
-            onClick={() =>
-              quantity > 1 &&
-              setQuantity(quantity - 1)
-            }
+            onClick={() => {
+
+              if (quantity > 1) {
+                setQuantity(quantity - 1);
+              }
+
+            }}
           >
             -
           </button>
 
+
           <span>
             {quantity}
           </span>
+
 
           <button
             onClick={() =>
@@ -115,24 +179,33 @@ function ProductDetails() {
 
         </div>
 
+
+        {/* =========================
+            PRODUCT BUTTONS
+        ========================= */}
+
         <div className="product-buttons">
+
+          {/* ADD TO CART */}
 
           <button
             className="add-cart-btn"
-            onClick={() =>
-              addToCart({
-                ...product,
-                quantity,
-              })
-            }
+            onClick={handleAddToCart}
           >
+
             <FaShoppingCart />
 
             Add To Cart
 
           </button>
 
-          <button className="buy-now-btn">
+
+          {/* BUY NOW */}
+
+          <button
+            className="buy-now-btn"
+            onClick={handleBuyNow}
+          >
 
             <FaBolt />
 
@@ -141,6 +214,11 @@ function ProductDetails() {
           </button>
 
         </div>
+
+
+        {/* =========================
+            FEATURES
+        ========================= */}
 
         <div className="product-features">
 
@@ -154,6 +232,7 @@ function ProductDetails() {
 
           </div>
 
+
           <div className="feature-item">
 
             <FaShieldAlt />
@@ -166,22 +245,38 @@ function ProductDetails() {
 
         </div>
 
-        {/* Product Specifications */}
-                <div className="specifications">
 
-          <h3>Product Specifications</h3>
+        {/* =========================
+            SPECIFICATIONS
+        ========================= */}
+
+        <div className="specifications">
+
+          <h3>
+            Product Specifications
+          </h3>
 
           <ul>
 
-            <li>✔ Premium Quality Material</li>
+            <li>
+              ✔ Premium Quality Material
+            </li>
 
-            <li>✔ Durable & Long Lasting</li>
+            <li>
+              ✔ Durable & Long Lasting
+            </li>
 
-            <li>✔ Easy To Use</li>
+            <li>
+              ✔ Easy To Use
+            </li>
 
-            <li>✔ Fast Delivery Across Pakistan</li>
+            <li>
+              ✔ Fast Delivery Across Pakistan
+            </li>
 
-            <li>✔ Cash On Delivery Available</li>
+            <li>
+              ✔ Cash On Delivery Available
+            </li>
 
           </ul>
 
