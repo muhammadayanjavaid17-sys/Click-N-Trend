@@ -1,3 +1,6 @@
+
+/* HEADER */
+
 .header {
   position: sticky;
   top: 0;
@@ -5,20 +8,29 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 8%;
+  padding: 10px 5%;
   background: #fff;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.07);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
 }
 
 .logo img {
-  width: 160px;
+  display: block;
+  width: 180px;
   height: auto;
+  max-height: 65px;
   object-fit: contain;
 }
 
 .nav {
   display: flex;
-  gap: 30px;
+  align-items: center;
+  gap: 25px;
 }
 
 .nav a {
@@ -39,8 +51,8 @@
 }
 
 .search-box {
-  width: 260px;
-  padding: 12px 18px;
+  width: 230px;
+  padding: 10px 16px;
   border-radius: 30px;
   border: 1px solid #ddd;
   outline: none;
@@ -49,7 +61,7 @@
 .cart-btn {
   background: #d4af37;
   color: #111;
-  padding: 12px 22px;
+  padding: 11px 20px;
   border-radius: 30px;
   text-decoration: none;
   font-weight: bold;
@@ -62,31 +74,46 @@
 
 .menu-toggle {
   display: none;
-  font-size: 32px;
+  font-size: 30px;
+  line-height: 1;
   cursor: pointer;
 }
 
-/* Mobile */
+/* TABLET AND MOBILE */
 
 @media (max-width: 768px) {
   .header {
     flex-wrap: wrap;
-    padding: 12px 20px;
+    min-height: 0;
+    padding: 8px 18px;
+    row-gap: 0;
   }
 
   .logo {
     flex: 1;
+    min-width: 0;
+  }
+
+  .logo img {
+    width: 190px;
+    max-width: 100%;
+    height: auto;
+    max-height: 52px;
   }
 
   .menu-toggle {
     display: block;
+    flex-shrink: 0;
+    padding: 4px 0 4px 12px;
   }
 
   .nav {
     display: none;
     width: 100%;
     flex-direction: column;
-    margin-top: 15px;
+    align-items: flex-start;
+    margin-top: 12px;
+    padding: 8px 0;
     gap: 15px;
   }
 
@@ -98,7 +125,8 @@
     display: none;
     width: 100%;
     flex-direction: column;
-    margin-top: 15px;
+    align-items: stretch;
+    margin-top: 10px;
   }
 
   .header-right.active {
@@ -106,15 +134,30 @@
   }
 
   .search-box {
+    box-sizing: border-box;
     width: 100%;
   }
 
   .cart-btn {
     width: 100%;
+    box-sizing: border-box;
     text-align: center;
   }
+}
 
-  .logo-img {
-    height: 55px;
+/* SMALL MOBILE */
+
+@media (max-width: 400px) {
+  .header {
+    padding: 7px 14px;
+  }
+
+  .logo img {
+    width: 170px;
+    max-height: 46px;
+  }
+
+  .menu-toggle {
+    font-size: 28px;
   }
 }
