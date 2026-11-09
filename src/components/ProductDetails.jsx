@@ -1,3 +1,4 @@
+
 import { useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
@@ -15,279 +16,237 @@ import {
 import "./ProductDetails.css";
 
 function ProductDetails({ onCartOpen }) {
-
   const { addToCart } = useContext(CartContext);
+  const { id } = useParams();
 
   const [quantity, setQuantity] = useState(1);
-
-  const { id } = useParams();
+  const [selectedImage, setSelectedImage] = useState(0);
 
   const product = products.find(
     (item) => item.id === Number(id)
   );
 
   if (!product) {
-    return (
-      <h2 className="not-found">
-        Product Not Found
-      </h2>
-    );
+    return <h2 className="not-found">Product Not Found</h2>;
   }
 
+  // Multiple images supported; fallback to main image
+  const images =
+    product.images?.length > 0
+      ? product.images
+      : [product.image];
 
-  // =========================
-  // ADD TO CART
-  // =========================
+  const currentImage = images[selectedImage] || product.image;
 
   const handleAddToCart = () => {
+    addToCart({ ...product, quantity });
 
-    addToCart({
-      ...product,
-      quantity,
-    });
-
-    // Open right-side cart drawer
     if (onCartOpen) {
       onCartOpen();
     }
-
   };
-
-
-  // =========================
-  // BUY NOW
-  // =========================
 
   const handleBuyNow = () => {
-
-    addToCart({
-      ...product,
-      quantity,
-    });
+    addToCart({ ...product, quantity });
 
     if (onCartOpen) {
       onCartOpen();
     }
-
   };
 
-
   return (
+    <main className="product-details-page">
+      <section className="product-details">
 
-    <section className="product-details">
+        {/* LEFT: PRODUCT GALLERY */}
+        <div className="product-gallery">
 
-      {/* =========================
-          LEFT SIDE
-      ========================= */}
+          <div className="product-thumbnails">
+            {images.map((image, index) => (
+              <button
+                key={index}
+                className={
+                  selectedImage === index
+                    ? "thumbnail active"
+                    : "thumbnail"
+                }
+                onClick={() => setSelectedImage(index)}
+                aria-label={`View product image ${index + 1}`}
+              >
+                <img src={image} alt={`${product.name} ${index + 1}`} />
+              </button>
+            ))}
+          </div>
 
-      <div className="product-image">
-
-        <img
-          src={product.image}
-          alt={product.name}
-        />
-
-      </div>
-
-
-      {/* =========================
-          RIGHT SIDE
-      ========================= */}
-
-      <div className="product-info">
-
-        <h1>
-          {product.name}
-        </h1>
-
-
-        {/* Rating */}
-
-        <div className="product-rating">
-
-          <FaStar />
-          <FaStar />
-          <FaStar />
-          <FaStar />
-          <FaStar />
-
-          <span>
-            {product.rating}
-          </span>
+          <div className="product-main-image">
+            <img
+              src={currentImage}
+              alt={product.name}
+            />
+          </div>
 
         </div>
 
+        {/* RIGHT: PRODUCT INFORMATION */}
+        <div className="product-info">
 
-        {/* Price */}
+          {product.rating && (
+            <div className="product-rating">
+              <div className="rating-stars">
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <FaStar key={star} />
+                ))}
+              </div>
 
-        <h2 className="product-price">
-          Rs. {product.price}
-        </h2>
+              <span>{product.rating}</span>
 
+              {product.reviewCount && (
+                <span className="review-count">
+                  ({product.reviewCount} Reviews)
+                </span>
+              )}
+            </div>
+          )}
 
-        {/* Stock */}
+          <h1>{product.name}</h1>
 
-        <div className="stock">
+          <div className="product-pricing">
 
-          <FaCheckCircle />
+            {product.originalPrice && (
+              <span className="original-price">
+                Rs. {product.originalPrice}
+              </span>
+            )}
 
-          <span>
-            In Stock
-          </span>
+            <span className="product-price">
+              Rs. {product.price}
+            </span>
 
-        </div>
+            {product.discount && (
+              <span className="discount-label">
+                SAVE {product.discount}%
+              </span>
+            )}
 
+          </div>
 
-        {/* Description */}
+          <div className="stock">
+            <FaCheckCircle />
+            <span>In Stock</span>
+          </div>
 
-        <p className="description">
-          {product.description}
-        </p>
+          <div className="product-description">
+            <h3>Product Description</h3>
+            <p>
+              {product.description ||
+                "Explore this product from Click N Trend. Quality products for better living."}
+            </p>
+          </div>
 
+          {/* PRODUCT OPTIONS - IF AVAILABLE */}
+          {product.options?.length > 0 && (
+            <div className="product-options">
+              <h3>Choose an Option</h3>
 
-        {/* =========================
-            QUANTITY
-        ========================= */}
+              <div className="option-list">
+                {product.options.map((option, index) => (
+                  <span key={index} className="option-item">
+                    {option}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
 
-        <div className="quantity-box">
+          {/* QUANTITY */}
+          <div className="purchase-row">
 
-          <button
-            onClick={() => {
+            <div className="quantity-box">
+              <button
+                onClick={() =>
+                  setQuantity((prev) => Math.max(1, prev - 1))
+                }
+                aria-label="Decrease quantity"
+              >
+                −
+              </button>
 
-              if (quantity > 1) {
-                setQuantity(quantity - 1);
-              }
+              <span>{quantity}</span>
 
-            }}
-          >
-            -
-          </button>
+              <button
+                onClick={() => setQuantity((prev) => prev + 1)}
+                aria-label="Increase quantity"
+              >
+                +
+              </button>
+            </div>
 
+            <button
+              className="add-cart-btn"
+              onClick={handleAddToCart}
+            >
+              <FaShoppingCart />
+              ADD TO CART
+            </button>
 
-          <span>
-            {quantity}
-          </span>
-
-
-          <button
-            onClick={() =>
-              setQuantity(quantity + 1)
-            }
-          >
-            +
-          </button>
-
-        </div>
-
-
-        {/* =========================
-            PRODUCT BUTTONS
-        ========================= */}
-
-        <div className="product-buttons">
-
-          {/* ADD TO CART */}
-
-          <button
-            className="add-cart-btn"
-            onClick={handleAddToCart}
-          >
-
-            <FaShoppingCart />
-
-            Add To Cart
-
-          </button>
-
-
-          {/* BUY NOW */}
+          </div>
 
           <button
             className="buy-now-btn"
             onClick={handleBuyNow}
           >
-
             <FaBolt />
-
-            Buy Now
-
+            BUY NOW
           </button>
 
-        </div>
+          {/* DELIVERY FEATURES */}
+          <div className="product-features">
 
+            <div className="feature-item">
+              <FaTruck />
+              <span>
+                <strong>Delivery All Over Pakistan</strong>
+                <small>Convenient nationwide delivery</small>
+              </span>
+            </div>
 
-        {/* =========================
-            FEATURES
-        ========================= */}
-
-        <div className="product-features">
-
-          <div className="feature-item">
-
-            <FaTruck />
-
-            <span>
-              Delivery All Over Pakistan
-            </span>
-
-          </div>
-
-
-          <div className="feature-item">
-
-            <FaShieldAlt />
-
-            <span>
-              Secure Shopping Experience
-            </span>
+            <div className="feature-item">
+              <FaShieldAlt />
+              <span>
+                <strong>Secure Shopping</strong>
+                <small>Shop with confidence</small>
+              </span>
+            </div>
 
           </div>
 
-        </div>
+          {/* PRODUCT DETAILS */}
+          <div className="specifications">
 
+            <h3>Product Information</h3>
 
-        {/* =========================
-            SPECIFICATIONS
-        ========================= */}
+            {product.type && (
+              <p>
+                <strong>Type:</strong> {product.type}
+              </p>
+            )}
 
-        <div className="specifications">
+            <p>
+              <strong>Availability:</strong> In Stock
+            </p>
 
-          <h3>
-            Product Specifications
-          </h3>
+            {product.category && (
+              <p>
+                <strong>Category:</strong> {product.category}
+              </p>
+            )}
 
-          <ul>
-
-            <li>
-              ✔ Premium Quality Material
-            </li>
-
-            <li>
-              ✔ Durable & Long Lasting
-            </li>
-
-            <li>
-              ✔ Easy To Use
-            </li>
-
-            <li>
-              ✔ Fast Delivery Across Pakistan
-            </li>
-
-            <li>
-              ✔ Cash On Delivery Available
-            </li>
-
-          </ul>
+          </div>
 
         </div>
-
-      </div>
-
-    </section>
-
+      </section>
+    </main>
   );
-
 }
 
 export default ProductDetails;
